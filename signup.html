@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly · Sign up with strength</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .top-header a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    body {
+      background: var(--primary-bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .top-header {
+      background: var(--secondary-bg);
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .logo-section {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .logo {
+      padding: 2px 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .travel-btn {
+      background: var(--primary-bg);
+      padding: 8px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .location {
+      font-size: 14px;
+      color: var(--text-main);
+    }
+
+    .location span {
+      color: #2874f0;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .search-header {
+      background: var(--secondary-bg);
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .fake-search {
+      width: 60%;
+      background: var(--primary-bg);
+      border-radius: 30px;
+      padding: 10px 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-icons div {
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .nav-icons a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nav-icons div.active-signup {
+      color: #2874f0;
+      font-weight: 600;
+      border-bottom: 2px solid #2874f0;
+      padding-bottom: 4px;
+    }
+
+    .signup-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+    }
+
+    .signup-card {
+      background: var(--secondary-bg);
+      border-radius: 24px;
+      box-shadow: 0 12px 32px var(--shadow-md);
+      width: 100%;
+      max-width: 560px;
+      padding: 36px 36px;
+      transition: 0.2s;
+    }
+
+    .signup-card h1 {
+      font-size: 30px;
+      font-weight: 600;
+      color: #212121;
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+
+    .signup-sub {
+      color: #5f5f5f;
+      font-size: 15px;
+      margin-bottom: 28px;
+      border-left: 4px solid #ffde00;
+      padding-left: 16px;
+      background: #fbfbfb;
+      border-radius: 0 10px 10px 0;
+      line-height: 1.5;
+    }
+
+    .name-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .name-row .input-group {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      font-weight: 500;
+      font-size: 14px;
+      color: #3c4a5a;
+      margin-bottom: 6px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid #e6e6e6;
+      border-radius: 14px;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.15s;
+      background: #fafafa;
+    }
+
+    .input-group input:focus {
+      border-color: #2874f0;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(40, 116, 240, 0.06);
+    }
+
+    .double-field {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .double-field .input-group {
+      flex: 1 1 200px;
+    }
+
+    .strength-wrapper {
+      margin-top: 8px;
+    }
+
+    .strength-bar {
+      display: flex;
+      gap: 6px;
+      height: 8px;
+      margin: 8px 0 4px;
+    }
+
+    .strength-segment {
+      flex: 1;
+      background: #e0e4ea;
+      border-radius: 20px;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .strength-segment.low {
+      background: #f44336;
+      /* red */
+    }
+
+    .strength-segment.medium {
+      background: #ff9800;
+      /* orange */
+    }
+
+    .strength-segment.strong {
+      background: #4caf50;
+      /* green */
+    }
+
+    .strength-segment.very-strong {
+      background: #2e7d32;
+      /* dark green */
+    }
+
+    .strength-text {
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .strength-label {
+      color: #3c4a5a;
+    }
+
+    .strength-value {
+      color: #2874f0;
+      background: #e8f0fe;
+      padding: 2px 12px;
+      border-radius: 30px;
+      font-weight: 600;
+    }
+
+    .password-hint {
+      font-size: 12px;
+      color: #6f7d8c;
+      margin-top: 6px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .password-hint span {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .password-hint .valid {
+      color: #2e7d32;
+    }
+
+    .password-hint .invalid {
+      color: #9aa6b2;
+    }
+
+    .terms {
+      font-size: 14px;
+      color: #4d5f71;
+      margin: 14px 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f8fafd;
+      padding: 10px 16px;
+      border-radius: 30px;
+    }
+
+    .terms input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #2874f0;
+      margin-right: 6px;
+      border-radius: 4px;
+    }
+
+    .terms a {
+      color: #2874f0;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .btn-signup {
+      background: #2874f0;
+      color: white;
+      border: none;
+      padding: 16px 20px;
+      font-size: 17px;
+      font-weight: 600;
+      border-radius: 50px;
+      width: 100%;
+      cursor: pointer;
+      margin: 8px 0 22px;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 18px rgba(40, 116, 240, 0.28);
+      letter-spacing: 0.3px;
+    }
+
+    .btn-signup:hover {
+      background: #1d5dcc;
+    }
+
+    .or-line {
+      display: flex;
+      align-items: center;
+      color: #a0a0a0;
+      font-size: 13px;
+      margin: 8px 0 18px;
+    }
+
+    .or-line::before,
+    .or-line::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #e2e6ec;
+    }
+
+    .or-line span {
+      padding: 0 18px;
+      font-weight: 500;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .social-btn {
+      background: #ffffff;
+      border: 1.5px solid #e0e4ea;
+      border-radius: 60px;
+      padding: 12px 20px;
+      font-weight: 500;
+      font-size: 15px;
+      color: #2a3a4b;
+      cursor: pointer;
+      transition: 0.18s;
+      flex: 1;
+      max-width: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .social-btn:hover {
+      background: #f5f9ff;
+      border-color: #2874f0;
+    }
+
+    .login-redirect {
+      text-align: center;
+      color: #475a6b;
+      font-size: 15px;
+      border-top: 1px solid #edf0f5;
+      padding-top: 22px;
+      margin-top: 8px;
+    }
+
+    .login-redirect a {
+      color: #2874f0;
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 6px;
+    }
+
+    .signup-benefit {
+      font-size: 13px;
+      color: #1f7b4d;
+      background: #e6f4ea;
+      padding: 10px 18px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .signup-footer {
+      background: #fff;
+      padding: 22px 40px;
+      border-top: 1px solid #dbe0e6;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      color: #6b7a8a;
+      font-size: 14px;
+    }
+
+    .signup-footer span {
+      color: #2874f0;
+      font-weight: 500;
+      cursor: default;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+
+    @media (max-width: 600px) {
+      .top-header {
+        padding: 10px 15px;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .signup-container {
+        padding: 15px;
+      }
+
+      .signup-card {
+        padding: 25px 20px;
+        border-radius: 16px;
+      }
+
+      .signup-card h1 {
+        font-size: 1.5rem;
+      }
+
+      .name-row,
+      .double-field {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .social-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .social-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .header-actions {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .signup-footer {
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 15px;
+        align-items: center;
+        text-align: center;
+      }
+
+      .signup-footer .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+    }
+
+    .chat-footer button:hover {
+      background: #1d5dcc;
+    }
+  </style>
+</head>
+
+<body class="gsap-reveal-page">
+
+
+    <div id="preloader">
+        <div class="loader-logo">
+            <img src="./images/favicon.webp" alt="Stackly Loading">
+        </div>
+    </div>
+
+
+
+  <div class="top-header">
+    <div class="logo-section">
+      <a href="./index.html">
+        <div class="logo"><img src="./images/logo.webp" alt="Stackly"></div>
+      </a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <div class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+            <i class="fa-solid fa-moon"></i>
+        </div>
+        <a href="shop.html">
+            <div class="location">
+                📍 Location not set <span>Select delivery location</span>
+            </div>
+        </a>
+    </div>
+  </div>
+
+
+
+  <div class="signup-container">
+    <div class="signup-card">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <img src="./images/logo.webp" alt="Register Illustration"
+          style="width: 100%; max-width: 180px;">
+      </div>
+      <h1>Create account</h1>
+      <div class="signup-sub">Join 10M+ shoppers — get tailored deals & loved suggestions</div>
+
+      <form id="signupForm">
+        <div class="name-row">
+          <div class="input-group">
+            <label>First name</label>
+            <input type="text" placeholder="John" id="firstName" required>
+          </div>
+          <div class="input-group">
+            <label>Last name</label>
+            <input type="text" placeholder="Doe" id="lastName" required>
+          </div>
+        </div>
+
+        <div class="double-field">
+          <div class="input-group">
+            <label>Email address</label>
+            <input type="email" placeholder="john@example.com" id="email" required>
+          </div>
+          <div class="input-group">
+            <label>Mobile number</label>
+            <input type="tel" placeholder="98765 43210" id="phone" required>
+          </div>
+        </div>
+
+        <div class="input-group" id="password-group">
+          <label>Password</label>
+          <input type="password" id="passwordInput" placeholder="Create a strong password" autocomplete="off" required>
+
+          <div class="strength-wrapper">
+            <div class="strength-bar" id="strengthBar">
+              <div class="strength-segment" id="seg1"></div>
+              <div class="strength-segment" id="seg2"></div>
+              <div class="strength-segment" id="seg3"></div>
+              <div class="strength-segment" id="seg4"></div>
+            </div>
+            <div class="strength-text">
+              <span class="strength-label">Password strength</span>
+              <span class="strength-value" id="strengthLabel">Strong</span>
+            </div>
+            <div class="password-hint">
+              <span id="hintLower" class="invalid">⬤ lowercase</span>
+              <span id="hintUpper" class="invalid">⬤ uppercase</span>
+              <span id="hintNumber" class="invalid">⬤ number</span>
+              <span id="hintLength" class="invalid">⬤ 8+ chars</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>Confirm password</label>
+          <input type="password" placeholder="Re-enter password" id="confirmPwd" required>
+        </div>
+
+        <div class="terms">
+          <input type="checkbox" id="termsCheck" required>
+          <label for="termsCheck">I agree to Stackly's <a href="shop.html">Terms of Use</a> and <a href="shop.html">Privacy
+              Policy</a>.</label>
+        </div>
+
+        <button type="submit" class="btn-signup">Sign up & get ₹200 off</button>
+      </form>
+
+      <div class="or-line"><span>OR</span></div>
+      <div class="social-row">
+        <a href="404.html"><div class="social-btn"><span>📧</span> Google</div></a>
+        <a href="404.html"><div class="social-btn"><span>📱</span> OTP</div></a>
+        <a href="404.html"><div class="social-btn"><span>🪪</span> Passkey</div></a>
+      </div>
+
+      <div class="login-redirect">
+        Already have an account? <a href="login.html">Log in</a>
+      </div>
+      <div style="display: flex; justify-content: center; margin-top: 10px;">
+        <div class="signup-benefit">
+          🎁 free shipping · 30-day returns · welcome gift
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="signup-footer">
+    <div>© 2025 Stackly e‑commerce — <span>signup & save</span></div>
+    <div class="footer-links">
+      <a href="./about.html">About</a>
+      <a href="./contact.html" id="contactNav">Contact</a>
+      <a href="./service.html">Service</a>
+      <a href="shop.html" style="text-decoration: none; color: inherit;">Help</a>
+      <a href="shop.html" style="text-decoration: none; color: inherit;">Privacy</a>
+      <a href="shop.html" style="text-decoration: none; color: inherit;">Terms</a>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+    
+    <div id="chatToggle" class="chat-toggle">
+        <span>💬</span>
+    </div>
+
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h3>Stackly Help Center</h3>
+            <span id="closeChat" class="close-chat">×</span>
+        </div>
+        <div id="chatBody" class="chat-body">
+            
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+  <script>
+    (function () {
+      const pwdInput = document.getElementById('passwordInput');
+      const seg1 = document.getElementById('seg1');
+      const seg2 = document.getElementById('seg2');
+      const seg3 = document.getElementById('seg3');
+      const seg4 = document.getElementById('seg4');
+      const strengthLabel = document.getElementById('strengthLabel');
+
+      const hintLower = document.getElementById('hintLower');
+      const hintUpper = document.getElementById('hintUpper');
+      const hintNumber = document.getElementById('hintNumber');
+      const hintLength = document.getElementById('hintLength');
+
+      function evaluatePasswordStrength(pw) {
+        const criteria = {
+          lower: /[a-z]/.test(pw),
+          upper: /[A-Z]/.test(pw),
+          number: /[0-9]/.test(pw),
+          length: pw.length >= 8
+        };
+
+        hintLower.className = criteria.lower ? 'valid' : 'invalid';
+        hintUpper.className = criteria.upper ? 'valid' : 'invalid';
+        hintNumber.className = criteria.number ? 'valid' : 'invalid';
+        hintLength.className = criteria.length ? 'valid' : 'invalid';
+
+        let score = 0;
+        if (criteria.lower) score++;
+        if (criteria.upper) score++;
+        if (criteria.number) score++;
+        if (criteria.length) score++;
+        if (pw.length >= 12) score++;            // extra point for very long
+
+        return { score, criteria };
+      }
+
+      function updateStrengthMeter() {
+        const pw = pwdInput.value || '';
+        const { score } = evaluatePasswordStrength(pw);
+
+        [seg1, seg2, seg3, seg4].forEach(seg => {
+          seg.classList.remove('low', 'medium', 'strong', 'very-strong');
+        });
+
+        if (pw.length === 0) {
+          strengthLabel.innerText = 'None';
+        } else if (score <= 2) {
+          seg1.classList.add('low');
+          strengthLabel.innerText = 'Low';
+        } else if (score === 3) {
+          seg1.classList.add('medium');
+          seg2.classList.add('medium');
+          strengthLabel.innerText = 'Medium';
+        } else if (score === 4) {
+          seg1.classList.add('strong');
+          seg2.classList.add('strong');
+          seg3.classList.add('strong');
+          strengthLabel.innerText = 'Strong';
+        } else if (score >= 5) {
+          seg1.classList.add('very-strong');
+          seg2.classList.add('very-strong');
+          seg3.classList.add('very-strong');
+          seg4.classList.add('very-strong');
+          strengthLabel.innerText = 'Very strong';
+        }
+
+        if (pw.length === 0) {
+          hintLower.className = 'invalid';
+          hintUpper.className = 'invalid';
+          hintNumber.className = 'invalid';
+          hintLength.className = 'invalid';
+          strengthLabel.innerText = 'None';
+        }
+      }
+
+      updateStrengthMeter();
+
+      pwdInput.addEventListener('input', updateStrengthMeter);
+
+      document.getElementById('signupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const pwd = document.getElementById('passwordInput').value;
+        const confirmPwd = document.getElementById('confirmPwd').value;
+
+        if (pwd !== confirmPwd) {
+          alert('Passwords do not match! Please check again.');
+          return;
+        }
+
+        alert('Account created successfully! Welcome to Stackly.');
+        window.location.href = 'login.html';
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

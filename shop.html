@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Stackly E-Commerce</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+</head>
+<body class="gsap-reveal-page">
+
+
+    <div id="preloader">
+        <div class="loader-logo">
+            <img src="./images/favicon.webp" alt="Stackly Loading">
+        </div>
+    </div>
+
+
+
+    
+    <header class="top-header">
+        <div class="logo-section">
+            <div class="hamburger-menu" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="index.html"><div class="logo"><img src="./images/logo.webp" alt="Stackly"></div></a>
+        </div>
+        <a href="404.html"><div class="location">
+            📍 Location not set <span>Select delivery location</span>
+        </div></a>
+    </header>
+
+    <nav class="search-header">
+        <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="#2874f0" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Search for Products, Brands">
+            <div id="suggestionsBox" class="suggestions-box"></div>
+        </div>
+
+        <div class="nav-icons">
+            <div class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                <i class="fa-solid fa-moon"></i>
+            </div>
+            <a href="./login.html">
+                <div>Login</div>
+            </a>
+            <a href="cart.html"><div>🛒 Cart <span class="cart-count">0</span></div></a>
+        </div>
+
+        <div class="nav-links">
+            <div class="nav-item-dropdown">
+                <a href="index.html" class="dropdown-toggle">Home <i class="fa-solid fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="./home2.html">Home 2</a></li>
+                </ul>
+            </div>
+             <a href="./shop.html"class="active">Shop</a>
+            <a href="./about.html">About</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./service.html">Service</a>
+            <a href="./blog.html">Blog</a>
+            <a href="./dashboard.html">Dashboard</a>
+        </div>
+    </nav>
+
+    <main>
+        
+        <section class="shop-hero">
+            <div class="main-container">
+                <div class="hero-content">
+                    <h1>Our Collection</h1>
+                    <p><a href="index.html">Home</a> / <span>Shop</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="shop-section main-container">
+            <div class="shop-layout">
+                
+                <aside class="shop-sidebar">
+                    <div class="filter-group">
+                        <h3>Categories</h3>
+                        <ul>
+                            <li><label><input type="checkbox" checked> All Products</label></li>
+                            <li><label><input type="checkbox"> Mens Dress</label></li>
+                            <li><label><input type="checkbox"> Womens Dress</label></li>
+                            <li><label><input type="checkbox"> Phones</label></li>
+                            <li><label><input type="checkbox"> Laptops</label></li>
+                            <li><label><input type="checkbox"> Speaker</label></li>
+                            <li><label><input type="checkbox"> Watch</label></li>
+                            <li><label><input type="checkbox"> TV</label></li>
+                            <li><label><input type="checkbox"> Headphones</label></li>
+                            <li><label><input type="checkbox"> Camera</label></li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Price Range</h3>
+                        <div class="price-inputs">
+                            <input type="number" placeholder="Min">
+                            <span>-</span>
+                            <input type="number" placeholder="Max">
+                        </div>
+                        <button class="filter-btn">Apply</button>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Brand</h3>
+                        <ul>
+                            <li><label><input type="checkbox"> Samsung</label></li>
+                            <li><label><input type="checkbox"> Apple</label></li>
+                            <li><label><input type="checkbox"> GOBOLT</label></li>
+                            <li><label><input type="checkbox"> Nike</label></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                
+                <div class="shop-main">
+                    <div class="shop-toolbar">
+                        <p>Showing <span id="resultsCount">12</span> results</p>
+                        <div class="sort-options">
+                            <select>
+                                <option value="default">Default Sorting</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="popularity">Popularity</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        <i class="fa-solid fa-box-open"></i>
+                        <p>No products found matching your search.</p>
+                    </div>
+
+                    <div class="product-row shop-grid">
+                        
+                        <div class="product-card" data-page="1" data-id="1" data-name="Premium Casual Navy Shirt" data-price="1299" data-category="Mens Dress" data-img="./images/home-4/outfit-person-1.webp">
+                            <div class="product-img">
+                                <img src="./images/home-4/outfit-person-1.webp" alt="Premium Casual Shirt">
+                                <span class="badge">New</span>
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Mens Dress</p>
+                                <h3 class="product-title">Premium Casual Navy Shirt</h3>
+                                <div class="rating">4.5 <span>★</span></div>
+                                <div class="price">₹1,299</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="1" data-id="2" data-name="Highlander Outdoor Jacket" data-price="1899" data-category="Mens Dress" data-img="./images/home-4/HIGHLANDER.webp">
+                            <div class="product-img">
+                                <img src="./images/home-4/HIGHLANDER.webp" alt="Highlander Casual Jacket">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Mens Dress</p>
+                                <h3 class="product-title">Highlander Outdoor Jacket</h3>
+                                <div class="rating">4.3 <span>★</span></div>
+                                <div class="price">₹1,899</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="product-card" data-page="1" data-id="3" data-name="Evening Silk Black Dress" data-price="3499" data-category="Womens Dress" data-img="./images/home-4/black-dress-woman.webp">
+                            <div class="product-img">
+                                <img src="./images/home-4/black-dress-woman.webp" alt="Elegant Black Dress">
+                                <span class="badge">Trendy</span>
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Womens Dress</p>
+                                <h3 class="product-title">Evening Silk Black Dress</h3>
+                                <div class="rating">4.8 <span>★</span></div>
+                                <div class="price">₹3,499</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-id="4" data-name="Berrylush Floral Print A-Line Dress" data-price="1199" data-category="Womens Dress" data-img="./images/home-4/Berrylush.webp">
+                            <div class="product-img">
+                                <img src="./images/home-4/Berrylush.webp" alt="Floral Summer Dress">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Womens Dress</p>
+                                <h3 class="product-title">Berrylush Floral Print A-Line Dress</h3>
+                                <div class="rating">4.4 <span>★</span></div>
+                                <div class="price">₹1,199</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="product-card" data-page="1" data-id="5" data-name="Next-Gen Ultra Smartphone 5G" data-price="54999" data-category="Phones" data-img="./images/product/PH 1.webp">
+                            <div class="product-img">
+                                <img src="./images/product/PH 1.webp" alt="Flagship Smartphone">
+                                <span class="badge">Hot</span>
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Phones</p>
+                                <h3 class="product-title">Next-Gen Ultra Smartphone 5G</h3>
+                                <div class="rating">4.7 <span>★</span></div>
+                                <div class="price">₹54,999</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="1" data-id="6" data-name="Essential Lite Smart Device" data-price="12499" data-category="Phones" data-img="./images/product/PH 2.webp">
+                            <div class="product-img">
+                                <img src="./images/product/PH 2.webp" alt="Budget Smartphone">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Phones</p>
+                                <h3 class="product-title">Essential Lite Smart Device</h3>
+                                <div class="rating">4.1 <span>★</span></div>
+                                <div class="price">₹12,499</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="product-card" data-page="1" data-id="7" data-name="Pro Performance Workstation" data-price="74999" data-category="Laptops" data-img="./images/product/LP 2.webp">
+                            <div class="product-img">
+                                <img src="./images/product/LP 2.webp" alt="Performance Laptop">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Laptops</p>
+                                <h3 class="product-title">Pro Performance Workstation</h3>
+                                <div class="rating">4.6 <span>★</span></div>
+                                <div class="price">₹74,999</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="1" data-id="8" data-name="Beast Gaming Pro Laptop RGB" data-price="112999" data-category="Laptops" data-img="./images/product/LP 3.webp">
+                            <div class="product-img">
+                                <img src="./images/product/LP 3.webp" alt="Gaming Laptop">
+                                <span class="badge">Sale</span>
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Laptops</p>
+                                <h3 class="product-title">Beast Gaming Pro Laptop RGB</h3>
+                                <div class="rating">4.9 <span>★</span></div>
+                                <div class="price">₹1,12,999</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="product-card" data-page="1" data-id="9" data-name="SonicBoom Portable Bluetooth Speaker" data-price="2499" data-category="Speaker" data-img="./images/product/Speker 1.webp">
+                            <div class="product-img">
+                                <img src="./images/product/Speker 1.webp" alt="Bluetooth Speaker">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Speaker</p>
+                                <h3 class="product-title">SonicBoom Portable Bluetooth Speaker</h3>
+                                <div class="rating">4.2 <span>★</span></div>
+                                <div class="price">₹2,499</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="1" data-id="10" data-name="CinemaMax Home Theater System" data-price="15999" data-category="Speaker" data-img="./images/product/Speker 3.webp">
+                            <div class="product-img">
+                                <img src="./images/product/Speker 3.webp" alt="Home Theatre">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Speaker</p>
+                                <h3 class="product-title">CinemaMax Home Theater System</h3>
+                                <div class="rating">4.5 <span>★</span></div>
+                                <div class="price">₹15,999</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="product-card" data-page="1" data-id="11" data-name="ActivLife Smart Series 5" data-price="4499" data-category="Watch" data-img="./images/product/Watch 1.webp">
+                            <div class="product-img">
+                                <img src="./images/product/Watch 1.webp" alt="Smartwatch">
+                                <span class="badge">Limited</span>
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Watch</p>
+                                <h3 class="product-title">ActivLife Smart Series 5</h3>
+                                <div class="rating">4.6 <span>★</span></div>
+                                <div class="price">₹4,499</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="1" data-id="12" data-name="Elegance Pro Analog Chronograph" data-price="7999" data-category="Watch" data-img="./images/product/Watch 2.webp">
+                            <div class="product-img">
+                                <img src="./images/product/Watch 2.webp" alt="Luxury Watch">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Watch</p>
+                                <h3 class="product-title">Elegance Pro Analog Chronograph</h3>
+                                <div class="rating">4.4 <span>★</span></div>
+                                <div class="price">₹7,999</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="product-card" data-page="1" data-id="13" data-name="VividView 55\" QLED 4K Smart TV" data-price="42999" data-category="TV" data-img="./images/product/TV 2.webp">
+                            <div class="product-img">
+                                <img src="./images/product/TV 2.webp" alt="QLED TV">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">TV</p>
+                                <h3 class="product-title">VividView 55" QLED 4K Smart TV</h3>
+                                <div class="rating">4.7 <span>★</span></div>
+                                <div class="price">₹42,999</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="1" data-id="14" data-name="Ultimate OLED Cinematic TV 4K" data-price="89999" data-category="TV" data-img="./images/product/TV 3.webp">
+                            <div class="product-img">
+                                <img src="./images/product/TV 3.webp" alt="OLED TV">
+                                <span class="badge">Premium</span>
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">TV</p>
+                                <h3 class="product-title">Ultimate OLED Cinematic TV 4K</h3>
+                                <div class="rating">4.9 <span>★</span></div>
+                                <div class="price">₹89,999</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="product-card" data-page="1" data-id="15" data-name="NoiseQuiet Pro ANC Wireless" data-price="12499" data-category="Headphones" data-img="./images/product/Headphon 2.webp">
+                            <div class="product-img">
+                                <img src="./images/product/Headphon 2.webp" alt="ANC Headphones">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Headphones</p>
+                                <h3 class="product-title">NoiseQuiet Pro ANC Wireless</h3>
+                                <div class="rating">4.6 <span>★</span></div>
+                                <div class="price">₹12,499</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="1" data-id="16" data-name="CrystalClear Air Pods Pro" data-price="18999" data-category="Headphones" data-img="./images/product/airpod.webp">
+                            <div class="product-img">
+                                <img src="./images/product/airpod.webp" alt="Wireless Earbuds">
+                                <span class="badge">Hot</span>
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Headphones</p>
+                                <h3 class="product-title">CrystalClear Air Pods Pro</h3>
+                                <div class="rating">4.8 <span>★</span></div>
+                                <div class="price">₹18,999</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="product-card" data-page="1" data-id="17" data-name="GuardPro 360 Security Camera" data-price="3499" data-category="Camera" data-img="./images/product/CCTV.webp">
+                            <div class="product-img">
+                                <img src="./images/product/CCTV.webp" alt="Security Camera">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Camera</p>
+                                <h3 class="product-title">GuardPro 360 Security Camera</h3>
+                                <div class="rating">4.1 <span>★</span></div>
+                                <div class="price">₹3,499</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="product-card" data-page="2" data-id="19" data-name="Elite Pro Gaming Mouse" data-price="2499" data-category="Laptops" data-img="./images/product/mouse.webp" style="display: none;">
+                            <div class="product-img">
+                                <img src="./images/product/mouse.webp" alt="Gaming Mouse">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Laptops</p>
+                                <h3 class="product-title">Elite Pro Gaming Mouse</h3>
+                                <div class="rating">4.5 ★</div>
+                                <div class="price">₹2,499</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="2" data-id="20" data-name="Wireless DualSense Controller" data-price="5999" data-category="Speaker" data-img="./images/product/joystick.webp" style="display: none;">
+                            <div class="product-img">
+                                <img src="./images/product/joystick.webp" alt="Joystick">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Speaker</p>
+                                <h3 class="product-title">Wireless DualSense Controller</h3>
+                                <div class="rating">4.8 ★</div>
+                                <div class="price">₹5,999</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="2" data-id="21" data-name="Smart Home CCTV Hub" data-price="8999" data-category="Camera" data-img="./images/product/Gajet.webp" style="display: none;">
+                            <div class="product-img">
+                                <img src="./images/product/Gajet.webp" alt="Gadget">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Camera</p>
+                                <h3 class="product-title">Smart Home CCTV Hub</h3>
+                                <div class="rating">4.3 ★</div>
+                                <div class="price">₹8,999</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="2" data-id="22" data-name="Pure Care Shampoo 500ml" data-price="499" data-category="Mens Dress" data-img="./images/product/Shampoo.webp" style="display: none;">
+                            <div class="product-img">
+                                <img src="./images/product/Shampoo.webp" alt="Shampoo">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Mens Dress</p>
+                                <h3 class="product-title">Pure Care Shampoo 500ml</h3>
+                                <div class="rating">4.0 ★</div>
+                                <div class="price">₹499</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="product-card" data-page="3" data-id="23" data-name="Compact Travel Hair Dryer" data-price="1299" data-category="Speaker" data-img="./images/product/Hair dry 1.webp" style="display: none;">
+                            <div class="product-img">
+                                <img src="./images/product/Hair dry 1.webp" alt="Hair Dryer">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Speaker</p>
+                                <h3 class="product-title">Compact Travel Hair Dryer</h3>
+                                <div class="rating">4.2 ★</div>
+                                <div class="price">₹1,299</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="3" data-id="24" data-name="FrostFlow Smart Refrigerator" data-price="32499" data-category="TV" data-img="./images/product/Fridge.webp" style="display: none;">
+                            <div class="product-img">
+                                <img src="./images/product/Fridge.webp" alt="Fridge">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">TV</p>
+                                <h3 class="product-title">FrostFlow Smart Refrigerator</h3>
+                                <div class="rating">4.7 ★</div>
+                                <div class="price">₹32,499</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-page="1" data-id="18" data-name="Urban Streetwear Sneakers" data-price="2199" data-category="Mens Dress" data-img="./images/home-4/img1.webp">
+                            <div class="product-img">
+                                <img src="./images/home-4/img1.webp" alt="Hottest Pairs Shoes">
+
+                            </div>
+                            <div class="product-info">
+                                <p class="category-name">Mens Dress</p>
+                                <h3 class="product-title">Urban Streetwear Sneakers</h3>
+                                <div class="rating">4.2 <span>★</span></div>
+                                <div class="price">₹2,199</div>
+                                <div class="product-card-controls">
+                                    <div class="quantity-control">
+                                        <button class="qty-btn minus" onclick="updateQty(this, -1)">-</button>
+                                        <input type="number" value="1" min="1" readonly>
+                                        <button class="qty-btn plus" onclick="updateQty(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart-btn" onclick="addToCartFromCard(this)">
+                                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pagination">
+                        <button class="active">1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>ABOUT</h3>
+                <ul>
+                    <li><a href="./404.html">Contact Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="./404.html">Careers</a></li>
+                    <li><a href="./404.html">Flipkart Stories</a></li>
+                    <li><a href="./404.html">Press</a></li>
+                    <li><a href="./404.html">Flipkart Wholesale</a></li>
+                    <li><a href="./404.html">Cleartrip</a></li>
+                    <li><a href="./404.html">Corporate Information</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>HELP</h3>
+                <ul>
+                    <li><a href="./404.html">Payments</a></li>
+                    <li><a href="./404.html">Shipping</a></li>
+                    <li><a href="./404.html">Cancellation & Returns</a></li>
+                    <li><a href="./404.html">FAQ</a></li>
+                    <li><a href="./404.html">Report Infringement</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>CONSUMER POLICY</h3>
+                <ul>
+                    <li><a href="./404.html">Return Policy</a></li>
+                    <li><a href="./404.html">Terms Of Use</a></li>
+                    <li><a href="./404.html">Security</a></li>
+                    <li><a href="./404.html">Privacy</a></li>
+                    <li><a href="./404.html">Sitemap</a></li>
+                    <li><a href="./404.html">Grievance Redressal</a></li>
+                    <li><a href="./404.html">EPR Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="./404.html">Facebook</a></li>
+                    <li><a href="./404.html">Twitter</a></li>
+                    <li><a href="./404.html">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-links">
+                <a href="./404.html"><span>👜 Become a Seller</span></a>
+                <a href="./404.html"><span>⭐ Advertise</span></a>
+                <a href="./404.html"><span>🎁 Gift Cards</span></a>
+                <a href="./404.html"><span>❓ Help Center</span></a>
+                <span>© 2026 Stackly. All rights reserved.</span>
+            </div>
+            <div class="payment-methods">
+                <img src="./images/payment-methods.webp" alt="Payment Methods">
+            </div>
+        </div>
+    </footer>
+
+    
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img id="modalImg" src="" alt="Product Image">
+                </div>
+                <div class="modal-details">
+                    <h2 id="modalTitle"></h2>
+                    <div id="modalRating" class="rating"></div>
+                    <div id="modalPrice" class="price"></div>
+                    <p class="modal-description">Experience the best in class performance and style with our curated product collection. Limited time offer!</p>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div id="chatToggle" class="chat-toggle">
+        <span>💬</span>
+    </div>
+
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h3>Stackly Help Center</h3>
+            <span id="closeChat" class="close-chat">×</span>
+        </div>
+        <div id="chatBody" class="chat-body">
+            
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

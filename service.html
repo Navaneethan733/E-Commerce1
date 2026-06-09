@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Stackly E-Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+</head>
+
+<body class="gsap-reveal-page">
+
+
+    <div id="preloader">
+        <div class="loader-logo">
+            <img src="./images/favicon.webp" alt="Stackly Loading">
+        </div>
+    </div>
+
+
+    
+    <header class="top-header">
+        <div class="logo-section">
+            <div class="hamburger-menu" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="index.html">
+                <div class="logo"><img src="./images/logo.webp" alt="Stackly"></div>
+            </a>
+        </div>
+        <a href="./404.html">
+            <div class="location">
+                📍 Location not set <span>Select delivery location</span>
+            </div>
+        </a>
+    </header>
+
+    <nav class="search-header">
+        <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="#2874f0" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Search for Products, Brands">
+            <div id="suggestionsBox" class="suggestions-box"></div>
+        </div>
+
+        <div class="nav-icons">
+            <div class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                <i class="fa-solid fa-moon"></i>
+            </div>
+            <a href="./login.html">
+                <div>Login</div>
+            </a>
+            <a href="cart.html">
+                <div>🛒 Cart <span class="cart-count">0</span></div>
+            </a>
+        </div>
+
+        <div class="nav-links">
+            <div class="nav-item-dropdown">
+                <a href="index.html" class="dropdown-toggle">Home <i class="fa-solid fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="./home2.html">Home 2</a></li>
+                </ul>
+            </div>
+             <a href="./shop.html">Shop</a>
+            <a href="./about.html">About</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./service.html"class="active">Service</a>
+            <a href="./blog.html">Blog</a>
+            <a href="./dashboard.html">Dashboard</a>
+        </div>
+    </nav>
+
+    <main class="service-main main-container">
+        
+        <section class="service-hero gsap-reveal-section">
+            <div class="service-hero-content">
+                <h1>Exceptional Services, Tailored for You</h1>
+                <p>At Stackly, we go beyond selling; we provide comprehensive solutions for a better lifestyle.</p>
+            </div>
+        </section>
+
+        
+        <section class="service-section gsap-reveal-section">
+            <div class="section-container">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 50px;">Core Offerings</h2>
+                <div class="service-grid">
+                    <div class="service-card-large">
+                        <div class="service-icon-wrapper">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <h3>Global Logistics</h3>
+                        <p>Our optimized supply chain network ensures that your products reach you anywhere in the world with speed and safety. We track every mile for your peace of mind.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-circle-check"></i> Express 24h delivery</li>
+                            <li><i class="fa-solid fa-circle-check"></i> International shipping</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Real-time tracking</li>
+                        </ul>
+                    </div>
+                    <div class="service-card-large">
+                        <div class="service-icon-wrapper">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3>Secure Commerce</h3>
+                        <p>We prioritize your security above all. Experience a frictionless checkout process backed by military-grade encryption and fraud protection.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-circle-check"></i> SSL Encryption</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Multiple gateways</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Data privacy gaurantee</li>
+                        </ul>
+                    </div>
+                    <div class="service-card-large">
+                        <div class="service-icon-wrapper">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </div>
+                        <h3>Easy Returns</h3>
+                        <p>Not satisfied with your purchase? No problem. Our hassle-free return policy allows you to return items within 30 days of purchase for a full refund.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-circle-check"></i> 30-day window</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Free pickup</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Quick refunds</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="service-section gsap-reveal-section">
+            <div class="section-container">
+                <div class="service-row">
+                    <div class="service-text">
+                        <h2 class="section-title">Wholesale & Business</h2>
+                        <p>Are you a business owner looking to stock your shelves? We offer specialized wholesale accounts with volume discounts and personalized account management.</p>
+                        <p>Stackly for Business provides you with the tools you need to scale your inventory efficiently and cost-effectively.</p>
+                        <a href="404.html" class="btn-primary" style="display: inline-block; margin-top: 15px; text-decoration: none;">Learn More</a>
+                    </div>
+                    <div class="service-image">
+                        <img src="./images/banner/20.webp" alt="Wholesale Service" style="border-radius: 20px; box-shadow: 0 10px 30px var(--shadow-md);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="service-cta gsap-reveal-section">
+            <div class="cta-content">
+                <h2>Ready to Start?</h2>
+                <p>Join thousands of happy customers and experience the best of Stackly today.</p>
+                <div class="cta-btns">
+                    <a href="shop.html" class="btn-primary" style="text-decoration: none;">Shop Now</a>
+                    <a href="404.html" class="btn-secondary" style="text-decoration: none; border: 1px solid white; color: white;">Learn More</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer class="footer">
+        <div class="footer-newsletter">
+            <div class="footer-newsletter-text">
+                <h4>📬 Stay in the Loop</h4>
+                <p>Get exclusive deals, new arrivals &amp; offers straight to your inbox.</p>
+            </div>
+            <div class="footer-newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button>Subscribe</button>
+            </div>
+        </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="404.html">Careers</a></li>
+                    <li><a href="404.html">Stackly Stories</a></li>
+                    <li><a href="404.html">Press</a></li>
+                    <li><a href="404.html">Stackly Wholesale</a></li>
+                    <li><a href="404.html">Corporate Information</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="404.html">Payments</a></li>
+                    <li><a href="404.html">Shipping</a></li>
+                    <li><a href="404.html">Cancellation &amp; Returns</a></li>
+                    <li><a href="404.html">FAQ</a></li>
+                    <li><a href="404.html">Report Infringement</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Consumer Policy</h3>
+                <ul>
+                    <li><a href="404.html">Return Policy</a></li>
+                    <li><a href="404.html">Terms Of Use</a></li>
+                    <li><a href="404.html">Security</a></li>
+                    <li><a href="404.html">Privacy</a></li>
+                    <li><a href="404.html">Sitemap</a></li>
+                    <li><a href="404.html">Grievance Redressal</a></li>
+                    <li><a href="404.html">EPR Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="footer-social-icons">
+                    <a href="404.html" class="fb" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="404.html" class="tw" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="404.html" class="ig" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="404.html" class="yt" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="404.html" class="li" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <div class="footer-bottom-links">
+                <a href="404.html"><i class="fa-solid fa-store"></i> Become a Seller</a>
+                <a href="404.html"><i class="fa-solid fa-bullhorn"></i> Advertise</a>
+                <a href="404.html"><i class="fa-solid fa-gift"></i> Gift Cards</a>
+                <a href="404.html"><i class="fa-solid fa-circle-question"></i> Help Center</a>
+                <span class="footer-copyright">© 2026 Stackly. All rights reserved.</span>
+            </div>
+            <div class="payment-methods">
+                <img src="./images/payment-methods.webp" alt="Payment Methods">
+            </div>
+        </div>
+    </footer>
+
+
+    
+    <div id="chatToggle" class="chat-toggle">
+        <span>💬</span>
+    </div>
+
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h3>Stackly Help Center</h3>
+            <span id="closeChat" class="close-chat">×</span>
+        </div>
+        <div id="chatBody" class="chat-body">
+            
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

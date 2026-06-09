@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Stackly E-Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+</head>
+
+<body class="gsap-reveal-page">
+
+
+    <div id="preloader">
+        <div class="loader-logo">
+            <img src="./images/favicon.webp" alt="Stackly Loading">
+        </div>
+    </div>
+
+
+    
+    <header class="top-header">
+        <div class="logo-section">
+            <div class="hamburger-menu" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="index.html">
+                <div class="logo"><img src="./images/logo.webp" alt="Stackly"></div>
+            </a>
+        </div>
+        <a href="./404.html">
+            <div class="location">
+                📍 Location not set <span>Select delivery location</span>
+            </div>
+        </a>
+    </header>
+
+    <nav class="search-header">
+        <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="#2874f0" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Search for Products, Brands">
+            <div id="suggestionsBox" class="suggestions-box"></div>
+        </div>
+
+        <div class="nav-icons">
+            <div class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                <i class="fa-solid fa-moon"></i>
+            </div>
+            <a href="./login.html">
+                <div>Login</div>
+            </a>
+            <a href="cart.html">
+                <div>🛒 Cart <span class="cart-count">0</span></div>
+            </a>
+        </div>
+
+        <div class="nav-links">
+            <div class="nav-item-dropdown">
+                <a href="index.html" class="dropdown-toggle">Home <i class="fa-solid fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="./home2.html">Home 2</a></li>
+                </ul>
+            </div>
+            <a href="shop.html">Shop</a>
+            <a href="./about.html">About</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./service.html">Service</a>
+            <a href="./blog.html" class="active">Blog</a>
+            <a href="dashboard.html">Dashboard</a>
+        </div>
+    </nav>
+
+    <main class="blog-main main-container">
+        
+        <section class="blog-hero gsap-reveal-section">
+            <div class="blog-hero-content">
+                <h1>Stackly Stories & Insights</h1>
+                <p>Discover the latest trends in fashion, technology, and lifestyle.</p>
+            </div>
+        </section>
+
+        <div class="blog-container container">
+            
+            <div class="blog-content">
+                <div class="blog-grid">
+                    
+                    <article class="blog-card gsap-reveal-section">
+                        <div class="blog-card-image">
+                            <img src="./images/home-4/outfit-person-13.webp" alt="Fashion Trends">
+                            <span class="blog-category">Fashion</span>
+                        </div>
+                        <div class="blog-card-details">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> Feb 23, 2026</span>
+                                <span><i class="fa-regular fa-user"></i> Admin</span>
+                            </div>
+                            <h2 class="blog-title"><a href="#">Summer 2026: The Ultimate Style Guide</a></h2>
+                            <p class="blog-excerpt">Explore the vibrant colors and breezy fabrics that will dominate the fashion scene this upcoming summer season...</p>
+                            <a href="./404.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    
+                    <article class="blog-card gsap-reveal-section">
+                        <div class="blog-card-image">
+                            <img src="./images/home-4/Electronics.webp" alt="Tech Gadgets">
+                            <span class="blog-category">Technology</span>
+                        </div>
+                        <div class="blog-card-details">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> Feb 20, 2026</span>
+                                <span><i class="fa-regular fa-user"></i> Tech Desk</span>
+                            </div>
+                            <h2 class="blog-title"><a href="#">Top 5 Must-Have Gadgets for Your Smart Home</a></h2>
+                            <p class="blog-excerpt">Upgrade your living space with these innovative devices designed to make your life easier and more connected...</p>
+                            <a href="./404.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    
+                    <article class="blog-card gsap-reveal-section">
+                        <div class="blog-card-image">
+                            <img src="./images/home-4/Travel.webp" alt="Lifestyle Tips">
+                            <span class="blog-category">Lifestyle</span>
+                        </div>
+                        <div class="blog-card-details">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> Feb 15, 2026</span>
+                                <span><i class="fa-regular fa-user"></i> Sarah J.</span>
+                            </div>
+                            <h2 class="blog-title"><a href="#">Balancing Work and Wellness: A Modern Guide</a></h2>
+                            <p class="blog-excerpt">Finding equilibrium in a fast-paced world can be challenging. Discover practical tips for maintaining your well-being...</p>
+                            <a href="./404.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    
+                    <article class="blog-card gsap-reveal-section">
+                        <div class="blog-card-image">
+                            <img src="./images/home-4/man-woman.webp" alt="Relationships">
+                            <span class="blog-category">Life</span>
+                        </div>
+                        <div class="blog-card-details">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> Feb 10, 2026</span>
+                                <span><i class="fa-regular fa-user"></i> Lifestyle Pro</span>
+                            </div>
+                            <h2 class="blog-title"><a href="#">The Art of Modern Communication</a></h2>
+                            <p class="blog-excerpt">How to build stronger connections in an increasingly digital world through meaningful interactions...</p>
+                            <a href="./404.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                
+                <div class="blog-pagination gsap-reveal-section">
+                    <a href="./404.html" class="pagination-arrow"><i class="fa-solid fa-chevron-left"></i></a>
+                    <a href="./404.html" class="active">1</a>
+                    <a href="./404.html">2</a>
+                    <a href="./404.html">3</a>
+                    <a href="./404.html" class="pagination-arrow"><i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+
+            
+            <aside class="blog-sidebar">
+                <div class="sidebar-widget gsap-reveal-section">
+                    <h3>Search Blog</h3>
+                    <div class="sidebar-search">
+                        <input type="text" placeholder="Search articles...">
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget gsap-reveal-section">
+                    <h3>Categories</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="./404.html">Fashion <span>(24)</span></a></li>
+                        <li><a href="./404.html">Technology <span>(15)</span></a></li>
+                        <li><a href="./404.html">Lifestyle <span>(18)</span></a></li>
+                        <li><a href="./404.html">Health <span>(12)</span></a></li>
+                        <li><a href="./404.html">Sustainable <span>(9)</span></a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget gsap-reveal-section">
+                    <h3>Recent Posts</h3>
+                    <div class="recent-post-item">
+                        <img src="./images/home-4/kid.webp" alt="Recent Post">
+                        <div class="recent-post-info">
+                            <a href="./404.html">How to style your workspace</a>
+                            <span>Feb 22, 2026</span>
+                        </div>
+                    </div>
+                    <div class="recent-post-item">
+                        <img src="./images/home-4/Beauty.webp" alt="Recent Post">
+                        <div class="recent-post-info">
+                            <a href="./404.html">Future of AI in Shopping</a>
+                            <span>Feb 18, 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget gsap-reveal-section">
+                    <h3>Join Our Newsletter</h3>
+                    <p>Get the latest stories delivered straight to your inbox.</p>
+                    <div class="sidebar-newsletter">
+                        <input type="email" placeholder="Your email address">
+                        <a href="./404.html"><button class="btn-primary">Subscribe</button></a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    
+    <footer class="footer">
+        <div class="footer-newsletter">
+            <div class="footer-newsletter-text">
+                <h4>📬 Stay in the Loop</h4>
+                <p>Get exclusive deals, new arrivals &amp; offers straight to your inbox.</p>
+            </div>
+            <div class="footer-newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button>Subscribe</button>
+            </div>
+        </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="./about.html">About Us</a></li>
+                    <li><a href="./404.html">Careers</a></li>
+                    <li><a href="./404.html">Stackly Stories</a></li>
+                    <li><a href="./404.html">Press</a></li>
+                    <li><a href="./404.html">Stackly Wholesale</a></li>
+                    <li><a href="./404.html">Corporate Information</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="./404.html">Payments</a></li>
+                    <li><a href="./404.html">Shipping</a></li>
+                    <li><a href="./404.html">Cancellation &amp; Returns</a></li>
+                    <li><a href="./404.html">FAQ</a></li>
+                    <li><a href="./404.html">Report Infringement</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Consumer Policy</h3>
+                <ul>
+                    <li><a href="./404.html">Return Policy</a></li>
+                    <li><a href="./404.html">Terms Of Use</a></li>
+                    <li><a href="./404.html">Security</a></li>
+                    <li><a href="./404.html">Privacy</a></li>
+                    <li><a href="./404.html">Sitemap</a></li>
+                    <li><a href="./404.html">Grievance Redressal</a></li>
+                    <li><a href="./404.html">EPR Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="footer-social-icons">
+                    <a href="./404.html" class="fb" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="./404.html" class="tw" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="./404.html" class="ig" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="./404.html" class="yt" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="./404.html" class="li" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <div class="footer-bottom-links">
+                <a href="./404.html"><i class="fa-solid fa-store"></i> Become a Seller</a>
+                <a href="./404.html"><i class="fa-solid fa-bullhorn"></i> Advertise</a>
+                <a href="./404.html"><i class="fa-solid fa-gift"></i> Gift Cards</a>
+                <a href="./404.html"><i class="fa-solid fa-circle-question"></i> Help Center</a>
+                <span class="footer-copyright">© 2026 Stackly. All rights reserved.</span>
+            </div>
+            <div class="payment-methods">
+                <img src="./images/payment-methods.webp" alt="Payment Methods">
+            </div>
+        </div>
+    </footer>
+
+
+    
+    <div id="chatToggle" class="chat-toggle">
+        <span>💬</span>
+    </div>
+
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h3>Stackly Help Center</h3>
+            <span id="closeChat" class="close-chat">×</span>
+        </div>
+        <div id="chatBody" class="chat-body">
+            
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

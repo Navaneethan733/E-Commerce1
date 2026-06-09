@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home 2 | Stackly E-Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home2.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+    <style>
+        /*
+         * SCROLL-GLITCH FIX:
+         * Set initial hidden state on reveal sections IN CSS, not just via GSAP.
+         * Without this, elements are briefly visible then pop/jump when GSAP
+         * ScrollTrigger kicks in — causing the scroll glitch.
+         */
+        .gsap-reveal-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: none; /* GSAP owns these properties */
+        }
+
+        /* 
+         * Prevent native scroll-behavior clashing with Lenis smooth scroll.
+         * Lenis intercepts scroll events; combining with CSS scroll-behavior
+         * causes double-smoothing which makes scrolling feel jumpy.
+         */
+        html {
+            scroll-behavior: auto !important;
+        }
+
+        /* GPU-accelerate the slider wrapper so it doesn't force page repaints */
+        .hero-slide {
+            will-change: opacity, transform;
+        }
+    </style>
+</head>
+
+<body class="gsap-reveal-page">
+
+
+    <div id="preloader">
+        <div class="loader-logo">
+            <img src="./images/favicon.webp" alt="Stackly Loading">
+        </div>
+    </div>
+
+
+    
+    <header class="top-header">
+        <div class="logo-section">
+            <div class="hamburger-menu" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="index.html">
+                <div class="logo"><img src="./images/logo.webp" alt="Stackly"></div>
+            </a>
+        </div>
+        <a href="./404.html">
+            <div class="location">
+                📍 Location not set <span>Select delivery location</span>
+            </div>
+        </a>
+    </header>
+
+    <nav class="search-header">
+        <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="#2874f0" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+
+            </svg>
+            <input type="text" id="searchInput" placeholder="Search for Products, Brands">
+            <div id="suggestionsBox" class="suggestions-box"></div>
+        </div>
+
+        <div class="nav-icons">
+            <div class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                <i class="fa-solid fa-moon"></i>
+            </div>
+            <a href="./login.html">
+                <div>Login</div>
+            </a>
+            <a href="cart.html">
+                <div>🛒 Cart <span class="cart-count">0</span></div>
+            </a>
+        </div>
+
+        <div class="nav-links">
+            <div class="nav-item-dropdown">
+                <a href="index.html" class="dropdown-toggle">Home <i class="fa-solid fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="home2.html" class="active">Home 2</a></li>
+                </ul>
+            </div>
+            <a href="./shop.html">Shop</a>
+            <a href="./about.html">About</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./service.html">Service</a>
+            <a href="./dashboard.html">Dashboard</a>
+        </div>
+    </nav>
+
+    <main class="home2-main">
+        
+        <section class="hero-v2" id="heroV2">
+            <!-- Slide wrapper -->
+            <div class="hero-slides-wrapper">
+
+                <!-- SLIDE 1 -->
+                <div class="hero-slide active-slide" data-bg="linear-gradient(135deg,#2874f0 0%,#1a59c5 100%)">
+                    <div class="hero-v2-container">
+                        <div class="hero-v2-content">
+                            <span class="deal-badge">LIMITED TIME DEAL</span>
+                            <h1>Get The Latest <br><span class="highlight">Trendy Shoes</span> Today.</h1>
+                            <p>Find your perfect fit from our wide collection of stylish footwear for every occasion and comfort.</p>
+                            <div class="hero-v2-btns">
+                                <a href="shop.html" class="btn-shop">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="about.html" class="btn-learn">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="hero-v2-image-container">
+                            <div class="abstract-shape shape-1"></div>
+                            <div class="abstract-shape shape-2"></div>
+                            <div class="shoe-wrapper">
+                                <img src="./images/banner/Shoe.webp" alt="Premium Sneaker" class="hero-shoe">
+                            </div>
+                            <div class="price-tag">
+                                <span>Price</span>
+                                <h3>$199</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 2 -->
+                <div class="hero-slide" data-bg="linear-gradient(135deg,#6a11cb 0%,#2575fc 100%)">
+                    <div class="hero-v2-container">
+                        <div class="hero-v2-content">
+                            <span class="deal-badge">NEW ARRIVAL</span>
+                            <h1>Premium <br><span class="highlight">Samsung Galaxy</span> Edition.</h1>
+                            <p>Experience next-gen technology with crystal-clear displays and blazing-fast performance at unbeatable prices.</p>
+                            <div class="hero-v2-btns">
+                                <a href="shop.html" class="btn-shop">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="about.html" class="btn-learn">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="hero-v2-image-container">
+                            <div class="abstract-shape shape-1"></div>
+                            <div class="abstract-shape shape-2"></div>
+                            <div class="shoe-wrapper">
+                                <img src="./images/home-4/Samsung.webp" alt="Samsung Galaxy" class="hero-shoe hero-shoe-upright">
+                            </div>
+                            <div class="price-tag" style="background:#a78bfa;color:#1e0060">
+                                <span>Price</span>
+                                <h3>$599</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 3 -->
+                <div class="hero-slide" data-bg="linear-gradient(135deg,#f7971e 0%,#e55d14 100%)">
+                    <div class="hero-v2-container">
+                        <div class="hero-v2-content">
+                            <span class="deal-badge">FLASH SALE — 70% OFF</span>
+                            <h1>Wireless Audio <br><span class="highlight">boAt Airdopes</span> Series.</h1>
+                            <p>Immerse yourself in rich, clear sound with premium wireless earbuds designed for your active lifestyle.</p>
+                            <div class="hero-v2-btns">
+                                <a href="shop.html" class="btn-shop">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="about.html" class="btn-learn">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="hero-v2-image-container">
+                            <div class="abstract-shape shape-1"></div>
+                            <div class="abstract-shape shape-2"></div>
+                            <div class="shoe-wrapper">
+                                <img src="./images/home-4/Boat lether finish.webp" alt="boAt Airdopes" class="hero-shoe hero-shoe-upright">
+                            </div>
+                            <div class="price-tag" style="background:#ffd700;color:#7a3800">
+                                <span>Price</span>
+                                <h3>$29</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 4 -->
+                <div class="hero-slide" data-bg="linear-gradient(135deg,#134e5e 0%,#71b280 100%)">
+                    <div class="hero-v2-container">
+                        <div class="hero-v2-content">
+                            <span class="deal-badge">BEST SELLER</span>
+                            <h1>Iconic <br><span class="highlight">Nike Comfort</span> Fit.</h1>
+                            <p>Step into style and performance with our top-rated Nike collection — engineered for everyday greatness.</p>
+                            <div class="hero-v2-btns">
+                                <a href="shop.html" class="btn-shop">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="about.html" class="btn-learn">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="hero-v2-image-container">
+                            <div class="abstract-shape shape-1"></div>
+                            <div class="abstract-shape shape-2"></div>
+                            <div class="shoe-wrapper">
+                                <img src="./infinity/Shoes.webp" alt="Nike Shoes" class="hero-shoe">
+                            </div>
+                            <div class="price-tag" style="background:#a8e6cf;color:#134e5e">
+                                <span>Price</span>
+                                <h3>$89</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /hero-slides-wrapper -->
+
+            </div><!-- /hero-slides-wrapper -->
+
+            <!-- Dot indicators -->
+            <div class="hero-dots" id="heroDots">
+                <span class="hero-dot active-dot"></span>
+                <span class="hero-dot"></span>
+                <span class="hero-dot"></span>
+                <span class="hero-dot"></span>
+            </div>
+
+        </section>
+
+
+        
+        <section class="categories container gsap-reveal-section">
+            <div class="category">
+                <a href="./shop.html"><img src="./images/home-4/outfit-person-13.webp" alt="Fashion"></a>
+                <p>Fashion</p>
+            </div>
+            <div class="category">
+                <a href="./shop.html"><img src="./images/home-4/Travel.webp" alt="Travel"></a>
+                <p>Travel</p>
+            </div>
+            <div class="category">
+                <a href="./shop.html"><img src="./images/home-4/Electronics.webp" alt="Electronics"></a>
+                <p>Electronics</p>
+            </div>
+            <div class="category">
+                <a href="./shop.html"><img src="./images/home-4/Kitchen.webp" alt="Home & Kitchen"></a>
+                <p>Home & Kitchen</p>
+            </div>
+            <div class="category">
+                <a href="./shop.html"><img src="./images/home-4/Beauty.webp" alt="Beauty"></a>
+                <p>Beauty</p>
+            </div>
+            <div class="category">
+                <a href="./shop.html"><img src="./images/home-4/Furniture.webp" alt="Furniture"></a>
+                <p>Furniture</p>
+            </div>
+            <div class="category">
+                <a href="./shop.html"><img src="./images/home-4/Sports.webp" alt="Sports"></a>
+                <p>Sports</p>
+            </div>
+            <div class="category">
+                <a href="./shop.html"><img src="./images/home-4/Mobile.webp" alt="Mobiles"></a>
+                <p>Mobiles</p>
+            </div>
+        </section>
+
+        
+        <section class="section container gsap-reveal-section">
+            <div class="section-header">
+                <h2>Suggested For You</h2>
+                <a href="./shop.html"><button class="login-btn">Go</button></a>
+            </div>
+
+            <div class="product-row">
+                <div class="product-card">
+                    <a href="./shop.html" style="text-decoration: none; color: inherit;">
+                        <div class="product-img">
+                            <img src="./images/home-4/Mustang.webp" alt="Wireless Earbuds">
+                        </div>
+                        <div class="rating">4.1 ★</div>
+                        <div class="product-title">GOBOLT Mustang Derby Wireless Earbuds</div>
+                        <div class="price">₹1,499 <span class="old-price">5,999</span></div>
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <a href="./shop.html" style="text-decoration: none; color: inherit;">
+                        <div class="product-img">
+                            <div class="ad-tag">AD</div>
+                            <img src="./images/home-4/Samsung.webp" alt="Samsung S23 Ultra">
+                        </div>
+                        <div class="rating">4.1 ★</div>
+                        <div class="product-title">Samsung S23 Ultra </div>
+                        <div class="price">₹1,299 <span class="old-price">5,499</span></div>
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <a href="./shop.html" style="text-decoration: none; color: inherit;">
+                        <div class="product-img">
+                            <img src="./images/home-4/Boat lether finish.webp" alt="boAt Airdopes">
+                        </div>
+                        <div class="rating">4.1 ★</div>
+                        <div class="product-title">boAt Airdopes 111v2 Leather Finish</div>
+                        <div class="price">₹1,199 <span class="old-price">4,990</span></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="loved-section container gsap-reveal-section">
+            <h2>Trending Styles</h2>
+            <div class="loved-row">
+                <div class="loved-card">
+                    <div class="loved-img">
+                        <a href="./shop.html"><img src="./images/home-4/outfit-person-1.webp" alt="Men"></a>
+                    </div>
+                    <p>Men</p>
+                </div>
+                <div class="loved-card">
+                    <div class="loved-img">
+                        <a href="./shop.html"><img src="./images/home-4/black-dress-woman.webp" alt="Women"></a>
+                    </div>
+                    <p>Women</p>
+                </div>
+                <div class="loved-card">
+                    <div class="loved-img">
+                        <a href="./shop.html"><img src="./images/home-4/kid-with-skateboard.webp" alt="Gen Z"></a>
+                    </div>
+                    <p>Gen Z Drips</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="new-arrivals container gsap-reveal-section">
+            <div class="section-header">
+                <h2>New Arrivals</h2>
+                <a href="shop.html" class="view-all">See All New</a>
+            </div>
+            <div class="arrivals-grid">
+                <div class="arrival-card">
+                    <div class="arrival-img">
+                        <img src="./images/home-4/outfit-person-12.webp" alt="Arrival 1">
+                        <div class="arrival-overlay">
+                            <span class="tag">FRESH</span>
+                        </div>
+                    </div>
+                    <div class="arrival-info">
+                        <h4>Urban Streetwear Set</h4>
+                        <p>Essential Summer Collection</p>
+                    </div>
+                </div>
+                <div class="arrival-card">
+                    <div class="arrival-img">
+                        <img src="./images/home-4/outfit-person-2.webp" alt="Arrival 2">
+                        <div class="arrival-overlay">
+                            <span class="tag">LIMITLESS</span>
+                        </div>
+                    </div>
+                    <div class="arrival-info">
+                        <h4>Minimalist Beige Look</h4>
+                        <p>Perfect for Casual Outings</p>
+                    </div>
+                </div>
+                <div class="arrival-card">
+                    <div class="arrival-img">
+                        <img src="./images/home-4/outfit-person-17.webp" alt="Arrival 3">
+                        <div class="arrival-overlay">
+                            <span class="tag">ELITE</span>
+                        </div>
+                    </div>
+                    <div class="arrival-info">
+                        <h4>Executive Smart Wear</h4>
+                        <p>Redefining Professionalism</p>
+                    </div>
+                </div>
+                <div class="arrival-card">
+                    <div class="arrival-img">
+                        <img src="./images/home-4/outfit-person-9.webp" alt="Arrival 4">
+                        <div class="arrival-overlay">
+                            <span class="tag">TRENDING</span>
+                        </div>
+                    </div>
+                    <div class="arrival-info">
+                        <h4>Lush Green Ensemble</h4>
+                        <p>Nature Meets Fashion</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="testimonials section gsap-reveal-section">
+            <div class="container">
+                <h2 class="section-title">WHAT OUR CUSTOMERS SAY</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="user-meta">
+                            <img src="./images/home-4/claudia.webp" alt="User">
+                            <div>
+                                <h5>Sarah Jenkins</h5>
+                                <div class="stars">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p>"Absolutely love the quality of the shoes I ordered. The comfort is unmatched!"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="user-meta">
+                            <img src="./images/home-4/ninoa.webp" alt="User">
+                            <div>
+                                <h5>Michael Ross</h5>
+                                <div class="stars">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p>"Stackly has become my go-to for all trendy fashion. Fast shipping and great support."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="user-meta">
+                            <img src="./images/home-4/orchard.webp" alt="User">
+                            <div>
+                                <h5>Emma Watson</h5>
+                                <div class="stars">⭐⭐⭐⭐★</div>
+                            </div>
+                        </div>
+                        <p>"The new dashboard makes tracking orders so much easier. Highly recommended!"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>ABOUT</h3>
+                <ul>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="./about.html">About Us</a></li>
+                    <li><a href="./service.html">Service</a></li>
+                    <li><a href="./blog.html">Stackly Stories</a></li>
+                    <li><a href="./shop.html">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>HELP</h3>
+                <ul>
+                    <li><a href="./404.html">Payments</a></li>
+                    <li><a href="./404.html">Shipping</a></li>
+                    <li><a href="./404.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>CONSUMER POLICY</h3>
+                <ul>
+                    <li><a href="./404.html">Return Policy</a></li>
+                    <li><a href="./404.html">Terms Of Use</a></li>
+                    <li><a href="./404.html">Privacy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="./404.html">Facebook</a></li>
+                    <li><a href="./404.html">Twitter</a></li>
+                    <li><a href="./404.html">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-links">
+                <a href="./404.html"><span>👜 Become a Seller</span></a>
+                <a href="./404.html"><span>⭐ Advertise</span></a>
+                <a href="./404.html"><span>🎁 Gift Cards</span></a>
+                <a href="./404.html"><span>❓ Help Center</span></a>
+                <span>© 2023-2024 Stackly.com</span>
+            </div>
+            <div class="payment-methods">
+                <img src="./images/payment-methods.webp" alt="Payment Methods">
+            </div>
+        </div>
+    </footer>
+
+
+    
+    <div id="chatToggle" class="chat-toggle">
+        <span>💬</span>
+    </div>
+
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h3>Stackly Help Center</h3>
+            <span id="closeChat" class="close-chat">×</span>
+        </div>
+        <div id="chatBody" class="chat-body">
+            
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        /* ======= HOME 2 HERO SLIDER (fixed) ======= */
+        (function () {
+            const hero    = document.getElementById('heroV2');
+            const slides  = Array.from(document.querySelectorAll('.hero-slide'));
+            const dots    = Array.from(document.querySelectorAll('.hero-dot'));
+            let current   = 0;
+            let animating = false;
+            let autoTimer = null;
+
+            /* Set background directly (GSAP can't tween gradient strings) */
+            function setBg(index) {
+                const bg = slides[index].getAttribute('data-bg');
+                if (bg) hero.style.background = bg;
+            }
+
+            /* Float animation on the product image */
+            let floatTween = null;
+            function floatImage(img) {
+                if (floatTween) floatTween.kill();
+                if (!img) return;
+                const isUpright = img.classList.contains('hero-shoe-upright');
+                floatTween = gsap.to(img, {
+                    y: -18,
+                    rotation: isUpright ? 0 : 2,
+                    duration: 3,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'power1.inOut',
+                    delay: 0.6
+                });
+            }
+
+            /* SCROLL PERFORMANCE FIX: Pause float animation during scroll */
+            if (typeof lenis !== 'undefined') {
+                lenis.on('scroll', (e) => {
+                    if (!floatTween) return;
+                    // e.velocity is non-zero when actively scrolling
+                    if (Math.abs(e.velocity) > 0.5) {
+                        floatTween.pause();
+                    } else {
+                        floatTween.play();
+                    }
+                });
+            }
+
+            /* Animate each element of the incoming slide */
+
+            function animateIn(slide, dir) {
+                const content = slide.querySelector('.hero-v2-content');
+                const img     = slide.querySelector('.hero-shoe');
+                const price   = slide.querySelector('.price-tag');
+                const xFrom   = dir * 80;
+
+                gsap.killTweensOf([content, img, price]);
+
+                gsap.fromTo(content,
+                    { x: xFrom, opacity: 0 },
+                    { x: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }
+                );
+                if (img) {
+                    gsap.fromTo(img,
+                        { x: -xFrom, opacity: 0, scale: 0.82 },
+                        { x: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.5)', delay: 0.08,
+                          onComplete: () => floatImage(img) }
+                    );
+                }
+                if (price) {
+                    gsap.fromTo(price,
+                        { scale: 0, opacity: 0 },
+                        { scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(2)', delay: 0.45 }
+                    );
+                }
+            }
+
+            /* Main transition */
+            function goTo(targetIdx, dir) {
+                if (animating || targetIdx === current) return;
+                animating = true;
+
+                const outSlide = slides[current];
+                const inSlide  = slides[targetIdx];
+
+                /* Kill float on outgoing image */
+                const outImg = outSlide.querySelector('.hero-shoe');
+                if (outImg) gsap.killTweensOf(outImg);
+
+                /* Fade out the current slide, then hide it */
+                outSlide.classList.add('leaving-slide');
+                outSlide.classList.remove('active-slide');
+
+                gsap.to(outSlide, {
+                    opacity: 0,
+                    x: dir * -60,
+                    duration: 0.4,
+                    ease: 'power2.in',
+                    onComplete: () => {
+                        outSlide.classList.remove('leaving-slide');
+                        gsap.set(outSlide, { clearProps: 'all' }); /* reset inline styles */
+                    }
+                });
+
+                /* Snap background immediately for snappier feel */
+                setBg(targetIdx);
+
+                /* Show the new slide at offset position, then tween in */
+                inSlide.classList.add('active-slide');
+                gsap.set(inSlide, { opacity: 0, x: dir * 60 });
+                gsap.to(inSlide, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.55,
+                    ease: 'power3.out',
+                    delay: 0.08,
+                    onComplete: () => { animating = false; }
+                });
+
+                /* Update dots */
+                dots[current].classList.remove('active-dot');
+                dots[targetIdx].classList.add('active-dot');
+
+                current = targetIdx;
+                animateIn(inSlide, dir);
+            }
+
+            function nextSlide() { goTo((current + 1) % slides.length,  1); }
+            function prevSlide() { goTo((current - 1 + slides.length) % slides.length, -1); }
+
+            function startAuto() { autoTimer = setInterval(nextSlide, 5000); }
+            function resetAuto() { clearInterval(autoTimer); startAuto(); }
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    const dir = i > current ? 1 : -1;
+                    goTo(i, dir);
+                    resetAuto();
+                });
+            });
+
+            /* Initialise */
+            setBg(0);
+            animateIn(slides[0], 1);
+            startAuto();
+        })();
+    </script>
+</body>
+
+</html>
